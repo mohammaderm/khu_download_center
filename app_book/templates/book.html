@@ -1,0 +1,583 @@
+{% extends "base.html" %} {% load social_tag %} {% load static %} {% load thumbnail %} {% block content %}
+
+
+
+<div class="section">
+  <div class="row">
+    <div class="col s12 m2 right">
+      <div class="">
+        <h5 class="right booktitle z-depth-2" style="width:73%;margin-right:32px;">دسته بندی ها</h5>
+        <br><br>
+        <ul class="scroller1" style="direction: initial; overflow-y:auto;height:504px;width:100%;">
+
+          {% for cate in sub %}
+          <li class="no-padding">
+            <ul class="collapsible collapsible-accordion categ" style="border-radius: 36px;">
+              <li>
+                <div class="collapsible-header hol" style="position:relative;border-radius: 36px;font-size: 13px;">{{ cate.title }}<i class="material-icons plus" style="font-size: 20px;">add</i></div>  
+                <div class="collapsible-body">
+                  <ul style="text-align: right;padding-right: 0px;font-size: 13px;">
+                    {% for cates in cate.category_set.all %}
+                    <a id="{{cates.id}}" class="const black-text" href=""><li class="cathov" style="list-style-type: disclosure-closed;margin-bottom:7px;">{{cates.title}}</li></a>
+                    <hr>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </li>
+          {% endfor %}
+
+
+        </ul>
+      </div>
+    </div>
+
+    <div class="col s12 m10 left">
+      <div class="">
+        <h5 id="category-name" class="right booktitle z-depth-2" style="margin-right: 0px;">کتاب و جزوات</h5>
+        <br><br><br>
+        <div class="row">
+          <div id="books">
+          </div>
+        </div>
+        <div class="nav-btn-container center">
+          <button class="prev-btn btn-floating waves-effect waves-light btn-small indigo darken-4"> <i class="material-icons">navigate_next</i></button>
+          <button class="next-btn btn-floating waves-effect waves-light btn-small indigo darken-4"> <i class="material-icons">navigate_before</i></button>
+        </div>
+      </div>
+    </div> 
+
+  </div>
+</div>
+
+<hr style="width: 72%;">
+
+<div class="section">
+  <div class="row" style="margin-right: 13px;margin-left:13px;">
+    <div id="blogpost"></div>
+  </div>
+</div>
+
+<hr style="width: 72%;">
+
+<div class="section">
+  <div class="">      
+    <h5 class="right booktitle z-depth-2">محبوب ترین ها</h5>
+    <br><br> <br>
+    <div class="row" style="margin-right: 13px;margin-left:13px;">
+      <div id="bookslike">
+      </div>
+    </div>
+    <div class="nav-btn-container center">
+      <button class="prev-btns btn-floating waves-effect waves-light btn-small indigo darken-4 z-depth-2"> <i class="material-icons">navigate_next</i></button>
+      <button class="next-btns btn-floating waves-effect waves-light btn-small indigo darken-4 z-depth-2"> <i class="material-icons">navigate_before</i></button>
+    </div>
+  </div>
+</div>
+<hr style="width: 72%;">
+
+
+
+<div class="section">
+  <div class="">      
+    <h5 class="right booktitle z-depth-2">پر بحث ترین ها</h5>
+    <br><br> <br>
+    <div class="row" style="margin-right: 13px;margin-left:13px;">
+      <div id="bookscomm">
+      </div>
+    </div>
+    <div class="nav-btn-container center">
+      <button class="prev-btnss btn-floating waves-effect waves-light btn-small indigo darken-4 z-depth-2"> <i class="material-icons">navigate_next</i></button>
+      <button class="next-btnss btn-floating waves-effect waves-light btn-small indigo darken-4 z-depth-2"> <i class="material-icons">navigate_before</i></button>
+    </div>
+  </div>
+</div>
+
+<hr style="width: 72%;">
+
+<div class="section">
+  <div class="row" style="margin-right: 13px;margin-left:13px;">
+    <div id="bookposter"></div>
+  </div>
+</div>
+
+<hr style="width: 72%;">
+
+<div class="section">
+  <div class="">      
+    <h5 class="right booktitle z-depth-2">رمان های ایرانی برگزیده</h5>
+    <br><br> <br>
+    <div class="row" style="margin-right: 13px;margin-left:13px;">
+      <div id="story">
+      </div>
+    </div>
+    <div class="nav-btn-container center">
+      <button class="prev-btnsss btn-floating waves-effect waves-light btn-small indigo darken-4 z-depth-2"> <i class="material-icons">navigate_next</i></button>
+      <button class="next-btnsss btn-floating waves-effect waves-light btn-small indigo darken-4 z-depth-2"> <i class="material-icons">navigate_before</i></button>
+    </div>
+  </div>
+</div>
+
+<hr style="width: 72%;">
+
+<div class="section">
+  <div class="">      
+    <h5 class="right booktitle z-depth-2">رمان های خارجی برگزیده</h5>
+    <br><br> <br>
+    <div class="row" style="margin-right: 13px;margin-left:13px;">
+      <div id="storyf">
+      </div>
+    </div>
+    <div class="nav-btn-container center">
+      <button class="prev-btnssss btn-floating waves-effect waves-light btn-small indigo darken-4 z-depth-2"> <i class="material-icons">navigate_next</i></button>
+      <button class="next-btnssss btn-floating waves-effect waves-light btn-small indigo darken-4 z-depth-2"> <i class="material-icons">navigate_before</i></button>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="row" style="margin-right: 13px;margin-left:13px;">
+    <div id="bookposters"></div>
+  </div>
+</div>
+
+
+{% endblock content %}
+{% block js %}
+{{ block.super }}
+<script type="text/javascript">
+  $('.dropdown-trigger').dropdown();
+
+  $.ajax({
+    url: "{% url 'app_book:blogs' %}",
+    type: "GET",
+    data: {
+      type: 'Blogbook',
+    },
+    success: function(data) {
+      console.log(data);
+      if (data) {                   
+        $.each(data, function(){
+          var url = "{% url 'app_book:blogdetails' 123 %}";
+          var id = $(this)[0]['slug']
+          url = url.replace('123', id);
+          image = $(this)[0]['imagesoft']
+          htm = `<a href="${url}">
+          <div class="col s12 m4 center">
+          <img class="imghov center z-depth-2" width="350" src="${image}" style="border-radius: 14px;max-height: 173px;width: 100%">
+          </div>
+          </a>`
+          $('#blogpost').append(htm);
+
+        });
+      }
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      console.log(jqXHR);
+      console.log(textStatus);
+      console.log(errorThrown);
+    }
+  });
+
+  $.ajax({
+    url: "{% url 'app_book:bookpost' %}",
+    type: "GET",
+    data: {
+      type: 'Book',
+    },
+    success: function(data) {
+      console.log(data);
+      if (data) {                   
+        $.each(data, function(){
+          var url = "{% url 'app_book:bookdetails' 123 %}";
+          var id = $(this)[0]['slug']
+          url = url.replace('123', id);
+          image = $(this)[0]['imagesoft']
+          htm = `<a href="${url}">
+          <div class="col s12 m4 center">
+          <img class="imghov center z-depth-2" width="350" src="${image}" style="border-radius: 14px;max-height: 173px;width: 100%">
+          </div>
+          </a>`
+          $('#bookposter').append(htm);
+          $('#bookposters').append(htm);
+
+        });
+      }
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      console.log(jqXHR);
+      console.log(textStatus);
+      console.log(errorThrown);
+    }
+  });
+
+  likepagination();
+  commepagination();
+  storespagination();
+  storesfpagination();
+
+  function storesfpagination(){
+    var page = 1,
+    pagelimit = 2,
+    totalrecord = 0;
+    fetchData();
+            // handling the prev-btn
+            $(".prev-btnssss").on("click", function(){
+              if (page > 1) {
+                page--;
+                fetchData();
+              }
+              console.log("Prev Page: " + page);
+            });
+            // handling the next-btn
+            $(".next-btnssss").on("click", function(){
+              if (page * pagelimit < totalrecord) {
+                page++;
+                fetchData();
+              }
+              console.log("Next Page: " + page);
+            });
+            function fetchData(){
+              // ajax() method to make api calls
+              
+              $.ajax({
+                url: "{% url 'app_book:storesf' %}",
+                type: "GET",
+                data: {
+                  page: page,
+                  pagelimit: pagelimit,
+                },
+                success: function(data) {
+                  $('#storyf').empty();
+                  console.log(data);
+                  if (data.results) {
+                    var dataArr = data.results;
+                    totalrecord = data.count;                   
+                    for (var i = 0; i < dataArr.length; i++) {
+                      var url = "{% url 'app_book:bookdetails' 123 %}";
+                      var id = dataArr[i].slug;
+                      url = url.replace('123', id); 
+                      var author = dataArr[i].author
+                      var title = dataArr[i].title                
+                      asd=`
+                      <div class="col s12 m1 center" style="margin-left: 75px;">
+                      <div class="valign-wrapper card-book">
+                      <a href="${url}"><img class="img-bookcard z-depth-2" width="160" height="211" src="${dataArr[i].imagesoft}"></a>
+                      <br>
+                      <a href="${url}">
+                      <div class="cardbook-title black-text">${title}</div>
+                      <div class="cardbook-athor grey-text ">${author}</div>
+                      </a>
+                      </div>
+                      </div>`
+                      $('#storyf').append(asd);
+                    }
+                  }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                  console.log(jqXHR);
+                  console.log(textStatus);
+                  console.log(errorThrown);
+                }
+              });
+            }
+          };
+
+
+          function storespagination(){
+            var page = 1,
+            pagelimit = 2,
+            totalrecord = 0;
+            fetchData();
+            // handling the prev-btn
+            $(".prev-btnsss").on("click", function(){
+              if (page > 1) {
+                page--;
+                fetchData();
+              }
+              console.log("Prev Page: " + page);
+            });
+            // handling the next-btn
+            $(".next-btnsss").on("click", function(){
+              if (page * pagelimit < totalrecord) {
+                page++;
+                fetchData();
+              }
+              console.log("Next Page: " + page);
+            });
+            function fetchData(){
+              // ajax() method to make api calls
+              
+              $.ajax({
+                url: "{% url 'app_book:stores' %}",
+                type: "GET",
+                data: {
+                  page: page,
+                  pagelimit: pagelimit,
+                },
+                success: function(data) {
+                  $('#story').empty();
+                  console.log(data);
+                  if (data.results) {
+                    var dataArr = data.results;
+                    totalrecord = data.count;                   
+                    for (var i = 0; i < dataArr.length; i++) {
+                      var url = "{% url 'app_book:bookdetails' 123 %}";
+                      var id = dataArr[i].slug;
+                      url = url.replace('123', id); 
+                      var author = dataArr[i].author
+                      var title = dataArr[i].title                
+                      asd=`
+                      <div class="col s12 m1 center" style="margin-left: 75px;">
+                      <div class="valign-wrapper card-book">
+                      <a href="${url}"><img class="img-bookcard z-depth-2" width="160" height="211" src="${dataArr[i].imagesoft}"></a>
+                      <br>
+                      <a href="${url}">
+                      <div class="cardbook-title black-text">${title}</div>
+                      <div class="cardbook-athor grey-text ">${author}</div>
+                      </a>
+                      </div>
+                      </div>`
+                      $('#story').append(asd);
+                    }
+                  }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                  console.log(jqXHR);
+                  console.log(textStatus);
+                  console.log(errorThrown);
+                }
+              });
+            }
+          };
+
+          function commepagination(){
+            var page = 1,
+            pagelimit = 2,
+            totalrecord = 0;
+            fetchData();
+            // handling the prev-btn
+            $(".prev-btnss").on("click", function(){
+              if (page > 1) {
+                page--;
+                fetchData();
+              }
+              console.log("Prev Page: " + page);
+            });
+            // handling the next-btn
+            $(".next-btnss").on("click", function(){
+              if (page * pagelimit < totalrecord) {
+                page++;
+                fetchData();
+              }
+              console.log("Next Page: " + page);
+            });
+            function fetchData(){
+              // ajax() method to make api calls
+              
+              $.ajax({
+                url: "{% url 'app_book:mostcoms' %}",
+                type: "GET",
+                data: {
+                  page: page,
+                  pagelimit: pagelimit,
+                },
+                success: function(data) {
+                  $('#bookscomm').empty();
+                  console.log(data);
+                  if (data.results) {
+                    var dataArr = data.results;
+                    totalrecord = data.count;                   
+                    for (var i = 0; i < dataArr.length; i++) {
+                      var url = "{% url 'app_book:bookdetails' 123 %}";
+                      var id = dataArr[i].slug;
+                      url = url.replace('123', id); 
+                      var author = dataArr[i].author
+                      var title = dataArr[i].title                
+                      asd=`
+                      <div class="col s12 m1 center" style="margin-left: 75px;">
+                      <div class="valign-wrapper card-book">
+                      <a href="${url}"><img class="img-bookcard z-depth-2" width="160" height="211" src="${dataArr[i].imagesoft}"></a>
+                      <br>
+                      <a href="${url}">
+                      <div class="cardbook-title black-text">${title}</div>
+                      <div class="cardbook-athor grey-text ">${author}</div>
+                      </a>
+                      </div>
+                      </div>`
+                      $('#bookscomm').append(asd);
+                    }
+                  }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                  console.log(jqXHR);
+                  console.log(textStatus);
+                  console.log(errorThrown);
+                }
+              });
+            }
+          };
+
+          function likepagination(){
+            var page = 1,
+            pagelimit = 2,
+            totalrecord = 0;
+            fetchData();
+            // handling the prev-btn
+            $(".prev-btns").on("click", function(){
+              if (page > 1) {
+                page--;
+                fetchData();
+              }
+              console.log("Prev Page: " + page);
+            });
+            // handling the next-btn
+            $(".next-btns").on("click", function(){
+              if (page * pagelimit < totalrecord) {
+                page++;
+                fetchData();
+              }
+              console.log("Next Page: " + page);
+            });
+            function fetchData(){
+              // ajax() method to make api calls
+              
+              $.ajax({
+                url: "{% url 'app_book:mostlikes' %}",
+                type: "GET",
+                data: {
+                  page: page,
+                  pagelimit: pagelimit,
+                },
+                success: function(data) {
+                  $('#bookslike').empty();
+                  console.log(data);
+                  if (data.results) {
+                    var dataArr = data.results;
+                    totalrecord = data.count;                   
+                    for (var i = 0; i < dataArr.length; i++) {
+                      var url = "{% url 'app_book:bookdetails' 123 %}";
+                      var id = dataArr[i].slug;
+                      url = url.replace('123', id); 
+                      var author = dataArr[i].author
+                      var title = dataArr[i].title                
+                      asd=`
+                      <div class="col s12 m1 center" style="margin-left: 75px;">
+                      <div class="valign-wrapper card-book">
+                      <a href="${url}"><img class="img-bookcard z-depth-2" width="160" height="211" src="${dataArr[i].imagesoft}"></a>
+                      <br>
+                      <a href="${url}">
+                      <div class="cardbook-title black-text">${title}</div>
+                      <div class="cardbook-athor grey-text ">${author}</div>
+                      </a>
+                      </div>
+                      </div>`
+                      $('#bookslike').append(asd);
+                    }
+                  }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                  console.log(jqXHR);
+                  console.log(textStatus);
+                  console.log(errorThrown);
+                }
+              });
+            }
+          };
+
+
+
+          $(function(){
+            var cat = 17;
+            var catname; 
+            pagination();
+            $('.const').on('click', function(event){
+              event.preventDefault()
+              cat = $(this).attr('id')
+              console.log(cat)
+              pagination();
+            })
+            function pagination(){
+              var page = 1,
+              pagelimit = 2,
+              totalrecord = 0;
+              fetchData();
+            // handling the prev-btn
+            $(".prev-btn").on("click", function(){
+              if (page > 1) {
+                page--;
+                fetchData();
+              }
+              console.log("Prev Page: " + page);
+            });
+            // handling the next-btn
+            $(".next-btn").on("click", function(){
+              if (page * pagelimit < totalrecord) {
+                page++;
+                fetchData();
+              }
+              console.log("Next Page: " + page);
+            });
+            function fetchData(){
+              // ajax() method to make api calls
+              console.log(cat);
+              $.ajax({
+                url: "{% url 'app_book:pagination' %}",
+                type: "GET",
+                data: {
+                  page: page,
+                  pagelimit: pagelimit,
+                  category: cat,
+                },
+                success: function(data) {
+                  $('#books').empty();
+                  $('#category-name').empty();
+                  console.log(data);
+                  if (data.results) {
+                    var dataArr = data.results;
+                    totalrecord = data.count;                   
+                    for (var i = 0; i < dataArr.length; i++) {
+                      var url = "{% url 'app_book:bookdetails' 123 %}";
+                      var id = dataArr[i].slug;
+                      url = url.replace('123', id); 
+                      var author = dataArr[i].author
+                      var title = dataArr[i].title                
+                      asd=`
+                      <div class="col s12 m2 center">
+                      <div class="valign-wrapper card-book">
+                      <a href="${url}"><img class="img-bookcard z-depth-2" width="160" height="211" src="${dataArr[i].imagesoft}"></a>
+                      <br>
+                      <a href="${url}">
+                      <div class="cardbook-title black-text">${title}</div>
+                      <div class="cardbook-athor grey-text ">${author}</div>
+                      </a>
+                      </div>
+                      </div>`
+                      $('#books').append(asd);
+                      catname = dataArr[i].catsoft
+                    }
+                    $('#category-name').append(catname);
+                  }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                  console.log(jqXHR);
+                  console.log(textStatus);
+                  console.log(errorThrown);
+                }
+              });
+            }
+          };
+        });
+
+
+
+      </script>
+      {% endblock js %} 
+
+
+
+
+
+
+

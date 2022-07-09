@@ -1,0 +1,177 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Parallax Template - Materialize</title>
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="{% static 'css/materialize.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <nav class="indigo darken-3" role="navigation">
+    <div class="nav-wrapper container">
+      <ul class="right hide-on-med-and-down">
+        <li class="waves-effect waves-light"><a class="white-text" href="{% url 'app_book:bookhome' %}"><i class="material-icons right">library_books</i>درسی</a></li>
+        <li class="waves-effect waves-light"><a class="white-text" href="{% url 'app_software:home' %}"><i class="material-icons right">home</i>خانه</a></li>
+      </ul>
+      <ul class="hide-on-med-and-down left">
+        {% if request.user.is_authenticated%}
+        <li><a class="waves-effect waves-light btn blue darken-2 white-text" href="{% url 'app_account:dashboard' %}"><i class="material-icons">account_box</i></a></li>
+        {% else %}
+        <li><a class="waves-effect waves-light btn blue darken-2 white-text" href="{% url 'app_account:login' %}">ورود / ثبت نام</a></li>
+        {% endif %} 
+        <li><a class="modal-trigger waves-effect waves-light btn blue darken-2 white-text" href="#modalq"><i class="material-icons">search</i></a></li>
+      </ul>
+      <ul id="nav-mobile" class="sidenav">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  {% block landing %}
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h4 class="header center white-text text-lighten-2">سرویس FTP خوارزمی</h4>
+        <div class="row center">
+          <h5 class="header col s12 light">جستجو در بین بیش از 5000 برنامه کاربردی.</h5>
+        </div>
+        <!-- <div class="row center">
+          <a style="display: inline-flex;width: 175px;margin-top: 50px;" href="#modal1" class="modal-trigger btn-large waves-effect waves-light teal lighten-1 valign-wrapper"><div style="padding: 27px;" class="valign-wrapper">
+            جستجو<i class="material-icons">search</i>     
+          </div></a>
+        </div> -->
+        <br><br>
+      </div>
+    </div>
+    <div class="parallax responsive-img slide"><img src="{% static 'Black-Animation-Background.svg' %}" alt="Unsplashed background img 1"></div>
+  </div>
+
+
+  <div style="width: 100%;height: 100%;margin-top: -69px!important;max-height: 100%;background-color:#eee;" id="modalq" class="modal">
+   <div class="modal-content">
+    <div class="col m12">
+      <div class="row center" style="margin-top: 57px;">
+        <div class="container">
+          <div class="col m8 right">
+            <input class="form-control black-text" id="search" type="text" placeholder="جستجو در نرم افزار فیلم جزوه اهنگ ...." />
+          </div>
+          <div class="col m2 left">
+            <a href="#!" class="modal-close blue waves-effect waves-blue btn">بستن</a>
+          </div> 
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="container" id="searchresults">
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock landing %}
+{% block content %}{% endblock content %}
+<footer class="page-footer ">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">Company Bio</h5>
+        <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+      </div>
+      <div class="col l3 s12">
+        <h5 class="white-text">Settings</h5>
+        <ul>
+          <li><a class="white-text" href="#!">Link 1</a></li>
+          <li><a class="white-text" href="#!">Link 2</a></li>
+          <li><a class="white-text" href="#!">Link 3</a></li>
+          <li><a class="white-text" href="#!">Link 4</a></li>
+        </ul>
+      </div>
+      <div class="col l3 s12">
+        <h5 class="white-text">Connect</h5>
+        <ul>
+          <li><a class="white-text" href="#!">Link 1</a></li>
+          <li><a class="white-text" href="#!">Link 2</a></li>
+          <li><a class="white-text" href="#!">Link 3</a></li>
+          <li><a class="white-text" href="#!">Link 4</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright indigo darken-4">
+    <div class="container">
+      Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+    </div>
+  </div>
+</footer>
+
+{% block js %}
+<!--  Scripts-->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<script src="{% static 'js/init.js' %}"></script>
+<script type="text/javascript">
+  
+  $('.modal').modal();
+  $('#search').keyup(function(){
+    var searcval = $('#search').val();
+    if (searcval.length >= 1) {
+      $.get({
+        url: "{% url 'app_software:list' %}",
+        data: {
+          'search':  searcval,
+        },
+        success: function (response) {
+          $('#searchresults').html('');
+          console.log(response)
+          $.each(response.results, function(){
+            title = $(this)[0]['title']
+            image = $(this)[0]['imagesoft']
+            version = $(this)[0]['version']
+            counterlike = $(this)[0]['counterlike']
+            countercomment = $(this)[0]['countercomment']
+            var url = "{% url 'app_software:software1' 123 %}";
+            var id = $(this)[0]['slug']
+            url = url.replace('123', id);
+            com = `
+            <div class="col m12 s12">
+            <a href="${url}">
+            <div class="hovercard card-panel" style="background-color: #eee;border-radius: 22px;">
+            <div class="row">
+            <div class="col m3 s12 right">
+            <img class="responsive-img" style="width: 100%;height: 174px;margin-top: 14px;border-radius: 8px; border:2px solid #eee;" src="${image}" width="100" alt="">
+            </div>
+            <div class="col m8 s12 right">
+            <p class="black-text" style="font-size:16px;" id="til">${title}</p>
+            <p class="blue-text" style="font-family:vazir-thin;margin-top:-21px;font-size:12px;" id="til">${version}</p>
+            <p class="green-text" style="margin-top:-11px;font-size:12px;" id="til">دسته: ${$(this)[0]['catsoft']}</p>
+            <p class="red-text" style="margin-top:-20px;font-size:12px;" id="til"><i class="material-icons" style="font-size:17px;">favorite</i>${counterlike}</p>
+            <p class="purple-text" style="margin-top:-20px;font-size:12px;" id="til"><i class="material-icons" style="font-size:17px;">comment</i>${countercomment}</p>
+            <p class="black-text" style="margin-top:-13px;font-size:13px;" id="til">این قسمت خلاصه ای از توضیحات این محصول نوشته میشود تا بیننده یک پیش نمایش از سرچ vاین قسمت خلاصه ای از ت.</p>
+            </div>
+            </div>
+            </div>
+            </div>
+            </a>`
+            $('#searchresults').append(com)   
+          });  
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+         console.log(textStatus, errorThrown);
+       }
+     });
+    }
+    else{
+      $('#searchresults').html('');
+    }
+  });
+</script>
+{% endblock js %}
+
+</body>
+</html>

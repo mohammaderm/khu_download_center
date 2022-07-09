@@ -1,0 +1,719 @@
+{% extends "base.html" %}
+{% load static %}
+{% load thumbnail %}
+{% block content %}
+{{ request.user }}
+<div class="section" style="background-color: white;">
+  <div class="container">
+
+    
+    <div class="row">
+      <div class="col s12 m4">
+        <div class="icon-block">
+          <h2 class="center orange-text"><i class="material-icons">flash_on</i></h2>
+          <h4 class="center">درخواست نرم افزار و لایسنس</h4>
+
+          <p class="light" style="text-align: center;">.شما میتوانید با ثبت نام و ورود به سایت در پنل کاربری خود درخواست نرم افزار یا لایسنس مورد نظر خود را ثبت کنید.</p>
+        </div>
+      </div>
+
+      <div class="col s12 m4">
+        <div class="icon-block">
+          <h2 class="center green-text"><i class="material-icons">import_contacts</i></h2>
+          <h4 class="center">اپلود و دانلود جزوه</h4>
+
+          <p class="light" style="text-align: center;">شما میتوانی با ثبت نام و ورود به پنل کاربری خود جزوه های درسی خود را به اشترک بگذارید و یا از جزوه های بقیه افراد استفاده کنید.</p>
+        </div>
+      </div>
+
+      <div class="col s12 m4">
+        <div class="icon-block">
+          <h2 class="center blue-text"><i class="material-icons">free_breakfast</i></h2>
+          <h4 class="center">بیش از 3000 هزار فیلم و اهنگ</h4>
+
+          <p class="light" style="text-align: center;">شما میتوانید از بیش از 3000 هزار فیلم و اهنگ مورد علاقه خود استفاده کنید.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="">
+  <div class="section">
+
+    
+    <div class="row">
+      <div class="col s12 m12" style="margin-bottom: -31px;">
+        <ul class="tabs tabs-fixed-width z-depth-1" style="border-radius: 8px;margin-bottom: 8px;">
+          <li class="tab col s12 m2"><a id="design" href="#test1"><i class="material-icons">palette</i>طراحی</a></li>
+          <li class="tab col s12 m2"><a id="internet" href="#test2"><i class="material-icons">public</i>اینترنت</a></li>
+          <li class="tab col s12 m2"><a id="android" href="#test3"><i class="material-icons">android</i>اندروید</a></li>
+          <li class="tab col s12 m2"><a id="security" href="#test4"><i class="material-icons">security</i>انتی ویروس</a></li>
+          <li class="tab col s12 m2"><a id="multimedia" href="#test5"><i class="material-icons">video_library</i>مولتی مدیا</a></li>
+          <li class="tab col s12 m2"><a id="desktop" href="#test6"><i class="material-icons">build</i>دسکتاپ</a></li>
+          <li class="tab col s12 m2"><a id="os" href="#test7"><i class="material-icons">build</i>سیستم عامل</a></li>
+          <!-- <li class="tab col s12 m2"><a href="#test1"><i class="material-icons">build</i>کاربردی</a></li> -->
+        </ul>
+
+        <div id="test1" class="col s12 m9 left">
+          <div class="card-panel" style="border-radius: 8px;">
+            <div class="row">
+              <div id="designs">
+              </div>
+            </div>
+            <div class="nav-btn-container center">
+              <button class="prev-btn btn-floating waves-effect waves-light btn-small indigo darken-4"> <i class="material-icons">navigate_next</i></button>
+              <button class="next-btn btn-floating waves-effect waves-light btn-small indigo darken-4"> <i class="material-icons">navigate_before</i></button>
+            </div>
+          </div>
+        </div>
+
+
+        <div id="test2" class="col s12 m9 left">
+          <div class="card-panel" style="border-radius: 8px;">
+            <div class="row">
+              <div id="internets">
+              </div>
+            </div>
+            <div class="nav-btn-container center">
+              <button class="prev-btn btn-floating waves-effect waves-light btn-small indigo darken-4"> <i class="material-icons">navigate_next</i></button>
+              <button class="next-btn btn-floating waves-effect waves-light btn-small indigo darken-4"> <i class="material-icons">navigate_before</i></button>
+            </div>
+          </div>
+        </div>
+
+
+        <div id="test3" class="col s12 m9 left">
+          <div class="card-panel" style="border-radius: 8px;">
+            <div class="row">
+              <div id="androids">
+              </div>
+            </div>
+            <div class="nav-btn-container center">
+              <button class="prev-btn btn-floating waves-effect waves-light btn-small indigo darken-4"> <i class="material-icons">navigate_next</i></button>
+              <button class="next-btn btn-floating waves-effect waves-light btn-small indigo darken-4"> <i class="material-icons">navigate_before</i></button>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div id="test4" class="col s12 m9 left">
+          <div class="card-panel" style="border-radius: 8px;">
+            <div class="row">
+              <div id="securitys"></div>   
+            </div>
+            <div class="nav-btn-container center">
+              <button class="prev-btn btn-floating waves-effect waves-light btn-small indigo darken-4"> <i class="material-icons">navigate_next</i></button>
+              <button class="next-btn btn-floating waves-effect waves-light btn-small indigo darken-4"> <i class="material-icons">navigate_before</i></button>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div id="test5" class="col s12 m9 left">
+          <div class="card-panel" style="border-radius: 8px;">
+            <div class="row">
+              <div id="multimedias">
+              </div>
+            </div>
+            <div class="nav-btn-container center">
+              <button class="prev-btn btn-floating waves-effect waves-light btn-small indigo darken-4"> <i class="material-icons">navigate_next</i></button>
+              <button class="next-btn btn-floating waves-effect waves-light btn-small indigo darken-4"> <i class="material-icons">navigate_before</i></button>
+            </div>
+          </div>
+        </div>
+
+        <div id="test6" class="col s12 m9 left">
+          <div class="card-panel" style="border-radius: 8px;">
+            <div class="row">
+              <div id="desktops">
+              </div>
+            </div>
+            <div class="nav-btn-container center">
+              <button class="prev-btn btn-floating waves-effect waves-light btn-small indigo darken-4"> <i class="material-icons">navigate_next</i></button>
+              <button class="next-btn btn-floating waves-effect waves-light btn-small indigo darken-4"> <i class="material-icons">navigate_before</i></button>
+            </div>
+          </div>
+        </div>
+
+        <div id="test7" class="col s12 m9 left">
+          <div class="card-panel" style="border-radius: 8px;">
+            <div class="row">
+              <div id="oss">
+              </div>
+            </div>
+            <div class="nav-btn-container center">
+              <button class="prev-btn btn-floating waves-effect waves-light btn-small indigo darken-4"> <i class="material-icons">navigate_next</i></button>
+              <button class="next-btn btn-floating waves-effect waves-light btn-small indigo darken-4"> <i class="material-icons">navigate_before</i></button>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        
+        <div class="col s12 m3 right" style="float:left;">
+          <div class="card-panel" style="border-radius: 8px;">
+            <h4 class="center black-text" style="margin-top:0; font-size:15px;">پر بازدیترین ها<i class="material-icons green-text">remove_red_eye</i></h4>
+            <hr class="green-text">
+            <ul class="collection scroller1" style="direction: initial; overflow-y:auto;height:615px;">
+              <div id="blogsoftpost"></div>
+
+              
+
+
+            </ul>
+          </div>
+        </div>
+
+        <div class="col s12 m9 left ">
+          <div class="card-panel scroller1" style="border-radius: 8px;direction: initial; overflow-y:auto;height:168px;">
+
+            <h4 class="center black-text" style="margin-top:0; font-size:15px;">محبوب ترین ها<i class="material-icons red-text">favorite</i></h4>
+            <hr class="red-text">
+
+
+
+
+            <div id="fav" class="center"></div>
+
+
+          </div>
+        </div>
+
+      </div>
+    </div>        
+  </div>
+</div>
+
+
+
+<div class="Section">
+  <div class="row">
+    <div class="col s12 m8" style="float:right;">
+      <div class="card-panel" style="margin-top:0px;border-radius: 8px;">
+        <h4 class="center black-text" style="margin-top:0; font-size:15px;">کاربردی<i class="material-icons indigo-text">phone_iphone</i></h4>
+        <hr class="indigo-text">
+        <div class="row">
+          <div id="practical"></div>
+
+        </div>
+        <div class="nav-btn-container center">
+              <button class="prev-btnp btn-floating waves-effect waves-light btn-small indigo darken-4"> <i class="material-icons">navigate_next</i></button>
+              <button class="next-btnp btn-floating waves-effect waves-light btn-small indigo darken-4"> <i class="material-icons">navigate_before</i></button>
+            </div>
+      </div>
+
+      <div class="card-panel scroller1" style="border-radius: 8px;direction: initial; overflow-y:auto;height:168px;">
+        <h4 class="center black-text" style="margin-top:0; font-size:15px;">پر بحث ترین<i class="material-icons purple-text">chat</i></h4>
+        <hr class="purple-text">
+        <div id="mostcom" class="center"></div>
+      </div>
+
+    </div>
+
+
+    
+
+
+
+
+
+
+
+    <div class="col s12 m4" style="float:left;">
+      <div class="card-panel" style="margin-top:0px; border-radius: 8px;margin-bottom: 0px;height: 683px;">
+        <h4 class="center black-text" style="margin-top:0; font-size:15px;">اخرین بروز رسانی<i class="material-icons pink-text">file_download</i></h4>
+        <hr class="pink-text">
+        <ul class="collapsible scroller2" style="direction: initial;overflow-y:auto; height:555px;">
+          {% for updates in lastupdatea %}
+          <li>
+            <div class="collapsible-header"><i class="material-icons blue-text">keyboard_arrow_down</i>دانلود {{updates.title}}</div>
+            <div class="collapsible-body" style="text-align: right;font-size: 15px;">
+              <a href="{% url 'app_software:software1' updates.slug %}"><span>{{updates.updatedescription|truncatewords:70|safe}}</span></a>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="section" style="background-color">
+  <div class="card-panel" style="margin-left:15px;margin-top: -21px;margin-right:15px;border-radius: 8px;">
+    <h4 class="center black-text" style="margin-top:0; font-size:15px;">پیشنهادات هفته<i class="material-icons deep-orange-text">date_range</i></h4>
+    <hr class="deep-orange-text">
+    
+    <div class="row">
+      <div id="sugest">
+        <!-- <div id="sugest"></div> -->
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- {{software.description|truncatewords:70|safe}} -->
+{% endblock content %}
+{% block js %}
+{{ block.super }}
+<script type="text/javascript">
+
+
+    $.ajax({
+    url: "{% url 'app_software:blogssoft' %}",
+    type: "GET",
+    data: {
+      type: 'Blogsoft',
+    },
+    success: function(data) {
+      console.log(data);
+      if (data) {                   
+        $.each(data, function(){
+          var url = "{% url 'app_software:blogsoftdetails' 123 %}";
+          var id = $(this)[0]['slug']
+          url = url.replace('123', id);
+          title = $(this)[0]['title']
+          htm = `<a href="${url}">
+          <li class="collection-item">${title}</li>
+          </a>`
+          $('#blogsoftpost').append(htm);
+
+        });
+      }
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      console.log(jqXHR);
+      console.log(textStatus);
+      console.log(errorThrown);
+    }
+  });
+
+  $.ajax({
+    url: "{% url 'app_software:mostlike' %}",
+    type: "GET",
+    data: {
+      type: 'Software',
+    },
+    success: function(data) {
+      console.log(data);
+      if (data) {                   
+        $.each(data, function(){
+          var url = "{% url 'app_software:software1' 123 %}";
+          var id = $(this)[0]['slug']
+          url = url.replace('123', id);
+          title = $(this)[0]['title']
+          htm = `<a href="${url}">
+          <div class="chip">
+          ${title}
+          </div>
+          </a>`
+          $('#fav').append(htm);
+
+        });
+      }
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      console.log(jqXHR);
+      console.log(textStatus);
+      console.log(errorThrown);
+    }
+  });
+
+
+  $.ajax({
+    url: "{% url 'app_software:mostcomment' %}",
+    type: "GET",
+    data: {
+      type: 'Software',
+    },
+    success: function(data) {
+      console.log(data);
+      if (data) {                   
+        $.each(data, function(){
+          var url = "{% url 'app_software:software1' 123 %}";
+          var id = $(this)[0]['slug']
+          url = url.replace('123', id);
+          title = $(this)[0]['title']
+          htm = `<a href="${url}">
+          <div class="chip">
+          ${title}
+          </div>
+          </a>`
+          $('#mostcom').append(htm);
+
+        });
+      }
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      console.log(jqXHR);
+      console.log(textStatus);
+      console.log(errorThrown);
+    }
+  });
+  
+
+  var page = 1,
+  pagelimit = 2,
+  totalrecord = 0;
+  var sdf = true;
+  fetchDataa();
+            // handling the prev-btn
+
+            function fetchDataa(){
+              // ajax() method to make api calls
+              
+              $.ajax({
+                url: "{% url 'app_software:list' %}",
+                type: "GET",
+                data: {
+                  page: page,
+                  pagelimit: pagelimit,
+                  suggest: sdf,
+                },
+                success: function(data) {
+                  $('#sugest').empty();
+                  console.log(data);
+                  if (data.results) {
+                    var dataArr = data.results;
+                    totalrecord = data.count;                   
+                    for (var i = 0; i < 6; i++) {
+                      var url = "{% url 'app_software:software1' 123 %}";
+                      var id = dataArr[i].slug;
+                      url = url.replace('123', id); 
+                      var version = dataArr[i].version
+                      var shortText = jQuery.trim(version).substring(0, 22)
+                      .split(" ").slice(0, -1).join(" ") + "...";
+                      qaz= `
+                      
+                      <div class="col m2 s12 valign-wrapper">
+                      <div class="card z-depth-1 hov" style="border: 2px solid #ddd;width: 220px;border-radius: 8px;">
+                      <a href="${url}">
+                      <div class="card-image">
+                      <img style="border-bottom: 3px solid #ddd;border-top-left-radius: 8px;border-top-right-radius: 8px;" src="${dataArr[i].imagesoft}">
+                      </div>
+                      <hr>
+                      </a>
+                      <span class="card-title">${dataArr[i].title}</span>
+                      <div class="card-content">
+                      <p class="card-cant">${shortText}</p>
+                      </div>
+                      </div>
+                      </div>
+                      `
+
+                      $('#sugest').append(qaz);
+                    }
+
+                  }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                  console.log(jqXHR);
+                  console.log(textStatus);
+                  console.log(errorThrown);
+                }
+              });
+            }
+
+
+
+
+
+
+            var page = 1,
+            pagelimit = 2,
+            totalrecord = 0;
+            fetchData();
+            // handling the prev-btn
+            $(".prev-btnp").on("click", function(){
+              if (page > 1) {
+                page--;
+                fetchData();
+              }
+              console.log("Prev Page: " + page);
+            });
+            // handling the next-btn
+            $(".next-btnp").on("click", function(){
+              if (page * pagelimit < totalrecord) {
+                page++;
+                fetchData();
+              }
+              console.log("Next Page: " + page);
+            });
+            function fetchData(){
+              // ajax() method to make api calls
+              
+              $.ajax({
+                url: "{% url 'app_software:list' %}",
+                type: "GET",
+                data: {
+                  page: page,
+                  pagelimit: pagelimit,
+                  category: '8',
+                },
+                success: function(data) {
+                  $('#practical').empty();
+                  console.log(data);
+                  if (data.results) {
+                    var dataArr = data.results;
+                    totalrecord = data.count;                   
+                    for (var i = 0; i < dataArr.length; i++) {
+                      var url = "{% url 'app_software:software1' 123 %}";
+                      var id = dataArr[i].slug;
+                      url = url.replace('123', id); 
+                      asdf= `
+                      <a href="${url}">
+                      <div class="col s12 m6 valign-wrapper" style="direction: ltr;">
+                      <div class="card horizontal z-depth-1 hovs" style="width: 400px;height: 64px;border: 1px solid #ddd;border-radius: 10px;">
+                      <div class="card-stacked " style="padding: 3px;">
+                      <span class="card-title left">${dataArr[i].title}</span>
+                      <span style="font-family: vazir-thin;font-size:11px;margin-top: 0px;" class="card-title valign-wrapper">${dataArr[i].version}</span>
+                      </div>
+                      <div class="card-image">
+                      <img style="height: 62px;width: 106px;border-top-left-radius: 6px;border-bottom-left-radius: 6px;border-right: 1px solid #eee;" src="${dataArr[i].imagesoft}">
+                      </div>
+                      </div>
+                      </div>
+                      </a>
+                      `
+
+                      $('#practical').append(asdf);
+                    }
+
+                  }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                  console.log(jqXHR);
+                  console.log(textStatus);
+                  console.log(errorThrown);
+                }
+              });
+            }
+
+
+
+
+
+
+
+
+            $(function(){
+
+              var cat = 3;
+              var card = '#designs'
+              pagination();
+
+
+              $('#multimedia').on('click', function(event){
+                cat=1
+                card = '#multimedias'
+                pagination();
+              })
+
+              $('#internet').on('click', function(event){
+                cat=2
+                card = '#internets'
+                pagination();
+              })
+
+
+              $('#android').on('click', function(event){
+                cat=4
+                card = '#androids'
+                pagination();
+              })
+
+              $('#security').on('click', function(event){
+                cat=5
+                card = '#securitys'
+                pagination();
+              })
+
+
+              $('#os').on('click', function(event){
+                cat=6
+                card = '#oss'
+                pagination();
+              })
+
+              $('#desktop').on('click', function(event){
+                cat=7
+                card = '#desktops'
+                pagination();
+              })
+
+
+              function pagination(){
+                var page = 1,
+                pagelimit = 2,
+                totalrecord = 0;
+                fetchData();
+            // handling the prev-btn
+            $(".prev-btn").on("click", function(){
+              if (page > 1) {
+                page--;
+                fetchData();
+              }
+              console.log("Prev Page: " + page);
+            });
+            // handling the next-btn
+            $(".next-btn").on("click", function(){
+              if (page * pagelimit < totalrecord) {
+                page++;
+                fetchData();
+              }
+              console.log("Next Page: " + page);
+            });
+            function fetchData(){
+              // ajax() method to make api calls
+              console.log(cat);
+              $.ajax({
+                url: "{% url 'app_software:list' %}",
+                type: "GET",
+                data: {
+                  page: page,
+                  pagelimit: pagelimit,
+                  category: cat,
+                },
+                success: function(data) {
+                  $(card).empty();
+                  console.log(data);
+                  console.log(card);
+                  if (data.results) {
+                    var dataArr = data.results;
+                    totalrecord = data.count;                   
+                    for (var i = 0; i < dataArr.length; i++) {
+                      var url = "{% url 'app_software:software1' 123 %}";
+                      var id = dataArr[i].slug;
+                      url = url.replace('123', id); 
+                      var version = dataArr[i].version
+                      var title = dataArr[i].title
+                      var shortText = jQuery.trim(version).substring(0, 22)
+                      .split(" ").slice(0, -1).join(" ") + "...";
+
+                      asd= `
+                      <div class="col s12 m3 valign-wrapper">
+                      <div class="hov card z-depth-1" style="border: 2px solid #ddd;width: 213px;border-radius: 8px;">
+                      <a href="${url}">
+                      <div class="card-image">
+                      <img style="border-bottom: 2px solid #ddd;border-top-left-radius: 8px;border-top-right-radius: 8px;" src="${dataArr[i].imagesoft}">
+                      </div>
+                      <hr>
+                      </a>
+                      <span class="card-title">${title}</span>
+                      <div class="card-content">
+                      <p class="card-cant">${shortText}</p>
+                      </div>
+                      </div>
+                      </div>`
+
+                      $(card).append(asd);
+                    }
+
+                  }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                  console.log(jqXHR);
+                  console.log(textStatus);
+                  console.log(errorThrown);
+                }
+              });
+            }
+          };
+
+        });
+
+
+
+
+      </script>
+      {% endblock js %}
+
+
+
+
+
+<!-- $(function (){
+      var page = 1,
+      pagelimit = 2,
+      totalrecord = 0;
+      fetchData();
+            // handling the prev-btn
+            $(".prev-btn").on("click", function(){
+              if (page > 1) {
+                page--;
+                fetchData();
+              }
+              console.log("Prev Page: " + page);
+            });
+            // handling the next-btn
+            $(".next-btn").on("click", function(){
+              if (page * pagelimit < totalrecord) {
+                page++;
+                fetchData();
+              }
+              console.log("Next Page: " + page);
+            });
+            function fetchData() {
+              // ajax() method to make api calls
+              $.ajax({
+                url: "{% url 'app_software:list' %}",
+                type: "GET",
+                data: {
+                  page: page,
+                  pagelimit: pagelimit
+                },
+                success: function(data) {
+                  $("#internet").empty();
+                  console.log(data);
+                  if (data.results) {
+                    var dataArr = data.results;
+                    totalrecord = data.count;                   
+                    for (var i = 0; i < dataArr.length; i++) {
+                      var url = "{% url 'app_software:software1' 123 %}";
+                      var id = dataArr[i].slug;
+                      url = url.replace('123', id); 
+                      asd= `
+                      <div class="col s12 m4 valign-wrapper">
+                      <div class="card">
+                      <a href="${url}">
+                      <div class="card-image">
+                      <img src="${dataArr[i].imagesoft}">
+                      </div>
+                      <hr>
+                      </a>
+                      <span class="card-title">${dataArr[i].slug}</span>
+                      <div class="card-content">
+                      <p class="card-cant">${dataArr[i].version}</p>
+                      </div>
+                      <div class="card-action">
+                      <a href="#"><i class="material-icons left red-text"style="font-size:20px;">favorite_border</i></a>
+                      <a href="#"><i class="material-icons left blue-text"style="font-size:20px;">share</i></a>
+                      <a href="#"><i class="material-icons left green-text"style="font-size:20px;">remove_red_eye</i></a>
+                      </div>
+                      </div>
+                      </div>`
+
+                      $("#internet").append(asd);
+                    }
+
+                  }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                  console.log(jqXHR);
+                  console.log(textStatus);
+                  console.log(errorThrown);
+                }
+              });
+            }
+          }); -->

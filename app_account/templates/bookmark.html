@@ -1,0 +1,72 @@
+{% extends "dash_base.html" %}
+{% load static %}
+{% load thumbnail %}
+{% block content %}
+
+
+
+<div class="container">
+  <div class="section">
+    <div class="row">
+      <h5 class="dashtitle z-depth-2">موارد ذخیره شده</h5>
+
+      <div class="row">
+
+        <h5 style="margin-top: 32px;">نرم افزار ها</h5>  
+        <hr>
+        <div class="row">
+        {% for cc in bookmark %}
+          {% if cc.content_object.version %}
+            <div class="col s12 m4 right">    
+              <div class="hov card z-depth-1" style="border: 2px solid #eee;width: 213px;border-radius: 8px;background-color: #eee">
+                <a href="{% url 'app_software:software1' cc.content_object.slug %}">
+                  <div class="card-image">
+                    {% thumbnail cc.content_object.image '213x132' crop="center" as im %}
+                    <img src="{{ im.url }}" class="responsive-img" width="{{ im.width }}" height="{{ im.height }}" style="border-bottom: 2px solid #ddd;border-top-left-radius: 8px;border-top-right-radius: 8px;">
+                    {% endthumbnail %}
+                  </div>
+                  <hr>
+                </a>
+                <span class="card-title">{{cc.content_object.title|truncatechars:29}}</span>
+                <div class="card-content">
+                  <p class="card-cant">{{cc.content_object.version|truncatechars:20}}</p>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+        </div>
+        <h5 style="margin-top: 19px;">کتاب ها و جزوه ها</h5>  
+        <hr>
+        <div class="row">
+        {% for cc in bookmark %}
+          {% if cc.content_object.author %}
+            <div class="col s12 m3 right">
+              <div class="valign-wrapper card-book">
+                <a href="{% url 'app_book:bookdetails' cc.content_object.slug %}">
+                  {% thumbnail cc.content_object.image '160x214' crop="center" as im %}
+                  <img class="img-bookcard" width="160" height="211" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+                  {% endthumbnail %}
+                </a>
+                <br>
+                <a href="{% url 'app_book:bookdetails' cc.content_object.slug %}">
+                  <div class="cardbook-title black-text">{{cc.content_object.title}}</div>
+                  <div class="cardbook-athor grey-text ">{{cc.content_object.author}}</div>
+                </a>
+              </div>
+            </div>
+            {% endif %}
+        {% endfor %}  
+        </div>  
+      </div>
+      
+
+      <!-- <img style="border-bottom: 2px solid #ddd;border-top-left-radius: 8px;border-top-right-radius: 8px;" src="${dataArr[i].imagesoft}"> -->
+
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock content %}

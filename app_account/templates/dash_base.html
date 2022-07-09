@@ -1,0 +1,164 @@
+{% load static %}
+{% load thumbnail %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Parallax Template - Materialize</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="{% static 'css/materialize.css' %}" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection" />
+</head>
+
+<body>
+    <style>
+        header,
+        main,
+        footer {
+            padding-right: 300px;
+        }
+
+        @media only screen and (max-width:992px) {
+            header,
+            main,
+            footer {
+                padding-right: 0;
+            }
+        }
+
+        .sidenav.sidenav-fixed.right {
+            padding-right: 0;
+            right: 0;
+        }
+    </style>
+
+
+
+    <ul id="slide-out" class="sidenav grey darken-4 sidenav-fixed right">
+        <li>
+            <div class="user-view">
+                <div class="background">
+                    {% thumbnail request.user.profile.avatar "500x300" crop="center" as im %}
+                    <img class="responsive-img" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+                    {% endthumbnail %} 
+                </div>
+                <div class="info">
+                    <span class="white-text name">{{ user.get_full_name }}</span>
+                    <span class="white-text email">{{ user.email }}</span>
+                </div>
+            </div>
+        </li>
+        <li><a class="waves-effect green-text" href="{% url 'app_account:dashboard' %}"><i class="material-icons green-text right">person</i>پروفایل</a></li>
+        <li><a class="waves-effect blue-text" href="{% url 'app_account:bookmark' %}"><i class="material-icons blue-text right">bookmark</i>موارد ذخیره شده</a></li>
+        <li><a class="waves-effect red-text" href="{% url 'app_account:softrequests' %}"><i class="material-icons red-text right">comment</i>درخواست ها</a></li>
+        <li><a class="waves-effect orange-text" href="{% url 'app_account:booksend' %}"><i class="material-icons orange-text right">pie_chart_outlined</i>موارد ارسالی</a>
+        </li>
+
+        <li>
+            <div class="divider blue"></div>
+        </li>
+        <li><a class="waves-effect white-text" href="{% url 'app_account:logout' %}"><i class="material-icons white-text right">exit_to_app</i>خروج از حساب کاربری</a></li>
+    </ul>
+
+
+    <main>
+
+        <nav class="indigo darken-4" role="navigation">
+            <div class="nav-wrapper container ltr">
+
+                <ul class="right hide-on-med-and-down">
+                    <li class="waves-effect waves-light"><a class="white-text" href="{% url 'app_book:bookhome' %}"><i class="material-icons right">library_books</i>درسی</a></li>
+                    <li class="waves-effect waves-light"><a class="white-text" href="{% url 'app_software:home' %}"><i class="material-icons right">home</i>خانه</a></li>
+                    
+                </ul>
+
+                <ul id="nav-mobile" class="sidenav">
+                    <li><a href="#">خانه</a></li>
+                </ul>
+                <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            </div>
+        </nav>
+
+
+        <!-- <div class="container">
+            <div class="section">
+                <div class="row">
+                    <h4>پروفایل من</h4>
+                    
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="card-panel">
+                        {{form.as_p}}
+                        {% csrf_token %}
+                        <div>
+                        <button class="waves-effect waves-light blue btn-small" name="submit" type="submit">ویرایش</
+                        </div>
+                    </form>
+                    
+              </div>
+          </div>
+      </div> -->
+
+      {% block content %}{% endblock content %}
+
+  </main>
+  <footer class="page-footer indigo darken-4">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Company Bio</h5>
+                <p class="grey-text text-lighten-4">We are a team of college students working on this project
+                    like it's our full time job. Any amount would help support and continue development on this
+                project and is greatly appreciated.</p>
+
+
+            </div>
+            <div class="col l3 s12">
+                <h5 class="white-text">مطالب سایت</h5>
+                <ul>
+                    <li><a class="white-text" href="#!">دوره های انلاین</a></li>
+                    <li><a class="white-text" href="#!">دوره های حظوری</a></li>
+                    <li><a class="white-text" href="#!">اخرین ویدیو ها</a></li>
+                    <li><a class="white-text" href="#!">مقاله ها</a></li>
+                </ul>
+            </div>
+            <div class="col l3 s12">
+                <h5 class="white-text">لینک های مفید</h5>
+                <ul>
+                    <li><a class="white-text" href="#!">ورود</a></li>
+                    <li><a class="white-text" href="#!">عضویت</a></li>
+                    <li><a class="white-text" href="#!">درباره من</a></li>
+                    <li><a class="white-text" href="#!">ارتباط با من</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            ساخته شده توسط <a class="brown-text text-lighten-3" href="http://materializecss.com">محمد
+            طاهرپور</a>
+        </div>
+    </div>
+</footer>
+
+<!--  Scripts-->
+{% block js %}
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="{% static 'js/materialize.js' %}"></script>
+<script src="{% static 'js/init.js' %}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.sidenav').sidenav({ edge: 'right' });
+        $('.collapsible').collapsible();
+
+    });
+</script>
+{% endblock js %}
+
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+{% extends "dash_base.html" %}
+{% load static %}
+{% block content %}
+
+
+
+<div class="container">
+  <div class="section">
+    <div class="row">
+      <h5 class="dashtitle z-depth-2">موارد ارسالی</h5>
+      
+      
+      <form method="POST" enctype="multipart/form-data">
+        <div class="card-panel z-depth-2" style="background-color: #eee;">
+          {{form.as_p}}
+          {% csrf_token %}                        
+          <button class="waves-effect waves-light  purple darken-4 btn-small" name="submit" type="submit">ارسال</
+          </div>
+        </form>
+        <hr>
+
+        
+        
+      </div>
+      
+      <div class="row">
+        <div class="card-panel z-depth-2" style="background-color: #eee;">
+
+
+          <table>
+            <thead>
+              <tr>
+                <th>نام کتاب</th>
+                <th>وضعیت</th>
+                <th>نتیجه</th>
+                <th>تاریخ</th>
+              </tr>
+            </thead>
+            {% for mybook in mybooksend %}
+            <tbody>
+              <tr>
+                {% if mybook.request_status %}
+                <td><a href="{% url 'app_book:bookdetails' mybook.slug %}">{{mybook.title}}</a></td>
+                <td class="green-text"><i class="material-icons">visibility</i></td>
+                {% else %}
+                <td>{{mybook.title}}</td>
+                <td class="red-text"><i class="material-icons">visibility_off</i></td>
+                {% endif %}
+                {% if mybook.adminresult %}
+                <td>{{mybook.adminresult}}</td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                <td>{{mybook.publish}}</td>
+              </tr>
+
+            </tbody>
+            {% endfor %}
+          </table>
+
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+
+
+  
+
+
+  {% endblock content %}
+
+  

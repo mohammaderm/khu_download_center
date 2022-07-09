@@ -1,0 +1,250 @@
+
+body {
+    background: #eee;
+}
+@font-face {
+    font-family: vazir-bold;
+    src: url('../font/Vazir-Black-FD.woff') format('woff'),
+    url('../font/Vazir-Black-FD.woff2') format('woff2'),
+    url('../font/Vazir-Bold-FD') format('truetype');
+}
+
+@font-face {
+    font-family: vazir-medium;
+    src: url('../font/Vazir-Medium-FD.woff') format('woff'),
+    url('../font/Vazir-Medium-FD.woff2') format('woff2'),
+    url('../font/Vazir-Medium-FD') format('truetype');
+}
+
+@font-face {
+    font-family: vazir-thin;
+    src: url('../font/Vazir-Thin-FD.woff') format('woff'),
+    url('../font/Vazir-Thin-FD.woff2') format('woff2'),
+    url('../font/Vazir-Thin-FD') format('truetype');
+}
+
+@font-face {
+    font-family: vazir-light;
+    src: url('../font/Vazir-Light-FD.woff') format('woff'),
+    url('../font/Vazir-Light-FD.woff2') format('woff2'),
+    url('../font/Vazir-Light-FD') format('truetype');
+}
+
+body,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+li,
+ul,
+a,
+nav,
+p,
+button {
+    font-family: vazir-medium;
+    direction: rtl;
+    text-align: justify;
+}
+
+
+
+strong,
+b {
+    font-family: vazir-bold;
+    direction: rtl;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+h3 {
+    font-size: 24px;
+}
+
+h4 {
+    font-size: 18px;
+}
+
+h5 {
+    font-size: 14px;
+}
+
+h6 {
+    font-size: 12px;
+}
+
+nav ul a,
+nav .brand-logo {
+    color: #444;
+    direction: ltr;
+}
+
+p {
+    line-height: 2rem;
+}
+
+.sidenav-trigger {
+    color: #26a69a;
+}
+
+.parallax-container {
+    min-height: 380px;
+    line-height: 0;
+    height: auto;
+    color: rgba(255, 255, 255, .9);
+}
+
+.parallax-container .section {
+    width: 100%;
+}
+
+@media only screen and (max-width: 992px) {
+    .parallax-container .section {
+        position: absolute;
+        top: 40%;
+    }
+    #index-banner .section {
+        top: 10%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #index-banner .section {
+        top: 0;
+    }
+}
+
+.icon-block {
+    padding: 0 15px;
+}
+
+.icon-block .material-icons {
+    font-size: inherit;
+}
+
+footer.page-footer {
+    margin: 0;
+}
+.header img {
+  float: left;
+  width: 100px;
+  height: 64px;
+  background: white;
+}
+
+.header h1 {
+  position: relative;
+  top: 18px;
+  left: 10px;
+}
+.slide{
+  width: 100%;
+  height: 10px;
+  background-size: 100% 100%!important;
+}
+.card {
+  width:250px;
+}
+
+@media only screen
+and (max-width : 480px) {
+.card { width:100px;}
+}
+
+@media only screen
+and (max-width : 767px) {
+.card { width:400px;}
+}
+.card .card-title {
+    font-size: 16px;
+    margin: 8px;
+    direction: ltr;
+    float: left;
+}
+.card .card-image img {
+    height: 110px;
+}
+.tabs .tab a{
+  color: rgb(107, 108, 187);
+}
+.tabs .tab a:hover, .tabs .tab a.active {
+    background-color: transparent;
+    color: #0f0077;
+}
+.tabs .indicator {
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    background-color: #301768;
+    will-change: left, right;
+}
+.tabs .tab a:focus, .tabs .tab a:focus.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    outline: none;
+}
+hr {
+    color: white;
+}
+.pagination li {
+    background-color:  #1b58a6;
+}
+.card-cant{
+    direction: ltr;
+    text-align: left;
+    float: left;
+    font-family: vazir-thin;
+    font-size: 13px;
+    color: #2b2b2b;
+}
+.card .card-content{
+  padding-left: 9px;
+  padding-bottom: 48px;
+}
+.card .card-action {
+    padding: 6px 24px;
+    border-top: 1px solid rgba(62, 62, 62, 0.2);
+}
+
+
+.scroller1 {
+  scrollbar-color: green white;
+}
+.scroller2 {
+  scrollbar-color: #880e4f white;
+}
+
+.owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev, .owl-carousel button.owl-dot {
+    font-size: 33px;
+}
+
+.page-footer{
+  background-color: #283593 !important;
+}
+
+.avatar-in-cumment {
+    height: auto;
+    width: 72px;
+    border: solid 2px #eee;
+    height: 70px;
+}
+
+.thin-card{
+  padding: 15px 24px;
+}
+.action-cument a{
+  margin-right: 5px;
+}
+.action-cument i{
+  font-size: 22px;
+}
+.left_requir{
+  text-align: left!important;
+  direction: ltr!important;
+}

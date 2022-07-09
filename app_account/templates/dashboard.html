@@ -1,0 +1,28 @@
+{% extends "dash_base.html" %}
+{% load static %}
+{% block content %}
+
+
+
+<div class="container">
+            <div class="section">
+                <div class="row">
+                    <h5 class="dashtitle z-depth-2">پروفایل من</h5>
+                    
+                    
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="card-panel z-depth-2" style="background-color: #eee;">
+                          {{form.as_p}}
+                          {% csrf_token %}
+                        
+                        <button class="waves-effect waves-light  purple darken-4 btn-small" name="submit" type="submit">ویرایش</
+                        </div>
+                    </form>
+                    
+              </div>
+          </div>
+      </div>
+
+
+
+{% endblock content %}

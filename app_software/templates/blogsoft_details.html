@@ -1,0 +1,254 @@
+{% extends "base.html" %}{% load social_tag %} {% load static %} {% load thumbnail %} {% block content %}
+
+<div class="container">
+	<div class="section">
+		<div class="card-panel center z-depth-2">
+			<!-- <div class="col s12 m12"> -->
+				<div class="row">
+
+				<div class="left blue-text">
+					{{blogdets.publish}}
+				</div>	
+
+				<div class="col s12 m12 center">
+					<p style="text-align:right;direction:rtl;font-family: vazir-bold;">{{blogdets.title}}</p>
+					{% thumbnail blogdets.image "830x337" crop="center" as im %}
+					<img class="z-depth-2 center responsive-img" width="{{ im.width }}" height="{{ im.height }}" src="{{ im.url }}" style="width: 100%;height: 337px;border-radius:8px;border: 2px solid #979595;">
+					{% endthumbnail %}
+				<hr>
+				</div>
+
+				</div>
+				<div class="row">
+					<div class="col s12 m12 center" style="text-align:justify;direction: rtl;">
+						<div class="">							
+							<div class="center">{{blogdets.description|safe}}</div>
+						</div>
+					</div>
+				</div>
+				<!-- </div> -->
+
+				
+
+
+			</div>
+
+
+			<ul class="tabs tabs-fixed-width z-depth-2" style="border-radius: 8px;">
+				<li class="tab col m3 s3"><a id="tab_cumment" href="#test2">نظرات</a></li>
+			</ul>
+
+		
+			<div id="test2" class="col s12">
+				<div class="card-panel">
+					<div class="row">
+
+						<div class="col s12 m12">
+							<div class="card-panel z-depth-2">
+								<h5 class="center">نظر خود را وارد کنید</h5>
+								<div class="input-field" style="margin-bottom: 3rem;">
+									<textarea id="cumment-val" class="materialize-textarea"></textarea>
+									<label style="left:38rem;" for="cumment-val">نظر خود را اینجا بنویسید</label>
+								</div>
+								<a href="#" id="submit-cumment" class="com-btn btn waves-effect waves-teal pink darken-4 white-text" data-id="{{blogdets.id}}" data-type="Blogsoft">ثبت نظر</a>
+							</div>
+						</div>
+
+
+						<!-- <lottie-player id="asdf" src="https://assets6.lottiefiles.com/packages/lf20_fuSQvA.json" background="#FFFFFF" speed="2" style="width: 200px;height:200px;" loop autoplay></lottie-player> -->
+
+						<div id="cumment_container" class="col m12 s12">
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+
+	{% endblock content %}
+
+	{% block js %}
+	{{ block.super }}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.fixed-action-btn').floatingActionButton();
+
+			$('#submit-cumment').on('click', function(event) {
+				event.preventDefault()
+				cumment = $('#cumment-val').val()
+				console.log(cumment)
+				$.post({
+					url: "{% url 'app_api:cumment' %}",
+					headers: {
+						'X-CSRFToken': '{{csrf_token}}'
+					},
+					data: {
+						'id': $(this).data('id'),
+						'type': $(this).data('type'),
+						'value': cumment
+
+					},
+					success: function(response) {
+						console.log(response)
+						M.toast({
+							html: response.message
+						})
+						$('#cumment-val').val('')
+
+					},
+					error: function(jqXHR, textStatus, errorThrown) {
+						console.log(textStatus, errorThrown);
+					}
+				});
+			});
+
+				$.get({
+					url: "{% url 'app_api:cumment_display' %}?id={{blogdets.id}}&type=Blogsoft",
+					success: function(response) {
+
+						$('#cumment_container').empty()
+						$.each(response, function() {
+							main_cum_id = $(this)[0]['id']
+							avatar = $(this)[0]['avatar']
+							value = $(this)[0]['value']
+							user_fullname = $(this)[0]['user_fullname']
+							publish = $(this)[0]['publish_date']
+							com =
+							`<div class="col s12">
+							<div class="card-panel thin-card" style="border: 1px solid #d2d2d2;position:relative;">
+							<span class="left indigo-text darken-4" style="position:absolute;left:10px;bottom:10px;">${publish}</span>
+							<div class="row">
+							<div class="valign-wrapper">
+							<div class="col m2 center">
+							<img class="circle responsive-img avatar-in-cumment"
+							src="${avatar}" alt="">
+							<div style="font-family: vazir-thin;font-size: 12px;margin-right: -4px;">${user_fullname}</div>
+							</div>
+							<div class="col m11">
+							<span class="action-cument">
+							<a class="left indigo-text darken-4 tooltipped" data-position="top" data-tooltip="مخالف" href="#"><i
+							class="material-icons">thumb_down</i></a>
+							<a class="left indigo-text darken-4 tooltipped" data-position="top" data-tooltip="موافق" href="#"><i
+							class="material-icons">thumb_up</i></a>
+
+							<a id="${main_cum_id}" class="comment-rep-btn left indigo-text darken-4 tooltipped" data-position="top"
+							data-tooltip="پاسخ" href="#"><i class="material-icons">reply</i></a>
+
+							</span>
+							<p style="font-size="14px;">${value}<p>
+							</div>
+							</div>
+							</div>
+							</div>
+							</div>
+
+							<div style="display:none;" class="all comment-rep${main_cum_id}">
+
+							<div class="col s12 m12">
+							<div class="card-panel z-depth-2">
+							<h5 class="center">پاسخ به نظر ${user_fullname}</h5>
+							<div class="input-field" style="margin-bottom: 3rem;">
+							<textarea id="reply-${main_cum_id}" class="materialize-textarea"></textarea>
+							<label style="left:38rem;" for="reply-${main_cum_id}">نظر خود را اینجا بنویسید</label>
+							</div>
+
+							<a href="#" id="${main_cum_id}" class="const white-text btn com-btn pink darken-4" data-id="${main_cum_id}" data-type="Cumment">ثبت پاسخ</a>
+							</div>
+							</div>
+							</div>
+							`
+							$.each($(this)[0]['reply'], function() {
+								avatar = $(this)[0]['avatar']
+								value = $(this)[0]['value']
+								user_fullname = $(this)[0]['user_fullname']
+								reply = `
+								<div class="col m11">
+								<div class="card-panel thin-card" style="border: 1px solid #d2d2d2;background-color: #eee; position:relative;">
+								<span class="left indigo-text darken-4" style="position:absolute;left:10px;bottom:10px;">${publish}</span>
+								<div class="row">
+								<div class="valign-wrapper">
+								<div class="col m2 center">
+								<img class="circle responsive-img avatar-in-cumment"
+								src="${avatar}" alt="">
+								<div style="font-family: vazir-thin;font-size: 12px;margin-right: -4px;">${user_fullname}</div>
+								</div>
+								<div class="col m11">
+								<span class="action-cument">
+								<a class="left indigo-text darken-4 tooltipped" data-position="top" data-tooltip="مخالف" href="#"><i
+								class="material-icons">thumb_down</i></a>
+								<a class="left indigo-text darken-4 tooltipped" data-position="top" data-tooltip="موافق" href="#"><i
+								class="material-icons">thumb_up</i></a>
+								</span>
+								<p>${value}</p>
+								</div>
+								</div>
+								</div>
+								</div>
+								</div>`
+								com += reply
+							});
+
+            // $('#cumment_container').append(com).hide();
+            // $('#asdf').fadeOut(200, function() {
+            //   $('#cumment_container').fadeIn(200);
+            // });
+
+            $('#cumment_container').append(com);
+            $('.tooltipped').tooltip();
+
+        });
+
+						$(".comment-rep-btn").click(function(event){
+							event.preventDefault();
+							repid = $(this).attr('id')
+							$(".comment-rep"+repid).fadeToggle();
+						});
+
+						$('.const').on('click', function(e){
+							e.preventDefault()
+							cards = $(this).attr('id')
+							console.log(cards)
+							cumment = $('#reply-' + cards).val()
+							console.log(cumment)
+							$.post({
+								url: "{% url 'app_api:cumment' %}",
+								headers: {
+									'X-CSRFToken': '{{csrf_token}}'
+								},
+								data: {
+									'id': $(this).data('id'),
+									'type': $(this).data('type'),
+									'value': cumment
+								},
+								success: function(response) {
+									console.log(response)
+									M.toast({
+										html: response.message
+									})
+									$('#reply-' + cards).val('')
+								},
+								error: function(jqXHR, textStatus, errorThrown) {
+									console.log(textStatus, errorThrown);
+								}
+							});
+						});
+					},
+					error: function(jqXHR, textStatus, errorThrown) {
+						console.log(textStatus, errorThrown);
+					}
+				});
+});
+
+</script>
+{% endblock js %}
+
+
+
+
+
+
+

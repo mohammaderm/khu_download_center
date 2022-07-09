@@ -1,0 +1,22 @@
+{% load thumbnail %}
+
+
+
+<div class="card">
+    <a href="{% url 'app_software:software1' software.slug %}">
+      <div class="card-image">
+        {% thumbnail software.image "600x300" crop="center" as im %}
+          <img src="{{ im.url }}" class="responsive-img" width="{{ im.width }}" height="{{ im.height }}">
+        {% endthumbnail %}
+      </div>
+    </a>
+    <span class="card-title">{{software.slug}}</span>
+    <div class="card-content">
+      <p class="card-cant">{{software.version}}</p>
+    </div>
+    <div class="card-action">
+      <a href="#"><i class="material-icons left red-text"style="font-size:20px;">favorite_border</i></a>
+      <a href="#"><i class="material-icons left blue-text"style="font-size:20px;">share</i></a>
+      <a href="#"><i class="material-icons left green-text"style="font-size:20px;">remove_red_eye</i></a>
+    </div>
+</div>
