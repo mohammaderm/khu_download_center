@@ -1,6 +1,9 @@
 # khu_download_center
 
-an download center for khu (software, book)
+an simple download center for khu (software, book)
+
+this is my first django application :)
+
 
 > download book, software
 
